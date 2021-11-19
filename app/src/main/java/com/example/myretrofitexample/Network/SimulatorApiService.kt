@@ -1,7 +1,9 @@
 package com.example.myretrofitexample.Network
 
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.http.GET
 
 private const val BASE_URL =
     "http://10.0.0.172:8842"
@@ -12,3 +14,8 @@ private val retrofit = Retrofit.Builder()
     .baseUrl(BASE_URL)
     .build()
 
+// {"time":"12.42"}
+interface SimulatorApiService {
+    @GET("simuapp/currentTime")
+    fun currentTime(): Response<SimulatorTime>
+}
